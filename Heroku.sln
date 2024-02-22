@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34408.163
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heroku", "Heroku\Heroku.csproj", "{ACEE754A-77B6-410F-B1D0-9F3C9C26D38B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ACEE754A-77B6-410F-B1D0-9F3C9C26D38B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACEE754A-77B6-410F-B1D0-9F3C9C26D38B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACEE754A-77B6-410F-B1D0-9F3C9C26D38B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACEE754A-77B6-410F-B1D0-9F3C9C26D38B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9FD29D1B-CDB5-4394-86EA-CFFB925BF482}
+	EndGlobalSection
+EndGlobal
