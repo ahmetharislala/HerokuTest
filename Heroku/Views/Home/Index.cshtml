@@ -1,8 +1,28 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var success = ViewData["success"];
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+@if (success!=null)
+{
+    <div class="alert alert-success">@success</div>
+}
+<form method="post">
+    <div class="row">
+        <div class="col-6">
+            <label>Ürün Adı</label>
+            <input name="Name" class="form-control" />
+        </div>
+        <div class="col-6">
+            <label>Ürün Açıklaması</label>
+            <input name="Description" class="form-control" />
+        </div>
+        <div class="col mt-3">
+            <button type="submit" class="form-control btn btn-success">Kaydet</button>
+        </div>
+    </div>
+</form>
+
+
+
