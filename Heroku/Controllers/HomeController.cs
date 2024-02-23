@@ -18,6 +18,7 @@ namespace Heroku.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+
             return View();
         }
         [HttpPost]
@@ -25,14 +26,13 @@ namespace Heroku.Controllers
         {
             _context.Products.Add(product);
             _context.SaveChanges();
-            ViewData["Success"] = "Başarılı";
-            return View();
+            return Json(new { success = true, message = "Ürün başarıyla kaydedildi." });
         }
         [HttpGet]
         public IActionResult ProductList()
         {
-            List<Product> products = _context.Products.ToList();
-            return View(products);
+            var products = _context.Products.ToList();
+            return Json(new { success = true,data= products, message = "Ürün başarıyla kaydedildi." });
         }
 
         public IActionResult Privacy()

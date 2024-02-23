@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Heroku.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240222193159_Initial")]
+    [Migration("20240223082834_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

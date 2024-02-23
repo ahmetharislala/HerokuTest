@@ -1,28 +1,92 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-    var success = ViewData["success"];
 }
-
-
-@if (success!=null)
-{
-    <div class="alert alert-success">@success</div>
-}
-<form method="post">
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/notyf/notyf.min.css">
+</head>
+<form id="productForm" method="post">
     <div class="row">
         <div class="col-6">
             <label>Ürün Adı</label>
-            <input name="Name" class="form-control" />
+            <input id="name" name="Name" class="form-control" />
         </div>
         <div class="col-6">
             <label>Ürün Açıklaması</label>
-            <input name="Description" class="form-control" />
+            <input id="des" name="Description" class="form-control" />
         </div>
         <div class="col mt-3">
             <button type="submit" class="form-control btn btn-success">Kaydet</button>
         </div>
     </div>
 </form>
+<div class="row">
+    <div class="col-12 mt-3">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="col-6">Ürün Adı</th>
+                    <th class="col-6">Ürün Açıklaması</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+@section Scripts {
+    <script src="https://unpkg.com/notyf/notyf.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+          refreshProductList();
+    var notyf = new Notyf();
 
+    $('#productForm').submit(function (e) {
+        e.preventDefault(); 
+        var formData = $(this).serialize(); 
 
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("Index", "Home")",
+            data: formData,
+            success: function (response) {
+                notyf.success(response.message);
+                $('#des').val('');
+                $('#name').val('');
+
+                refreshProductList();
+            },
+            error: function (response) {
+                notyf.error(response.message);
+            }
+        });
+    });
+
+    function refreshProductList() {
+        $.ajax({
+            url: '/Home/ProductList', 
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data)
+                if (data.success) {
+                    var rows = '';
+                    $.each(data.data, function (key, item) {
+                        rows += '<tr><td>' + item.name + '</td><td>' + item.description + '</td></tr>';
+                    });
+                   $(".table tbody").html(rows);
+                   } else {
+                    notyf.error("Ürünler yüklenemedi.");
+                }
+            },
+            error: function (error) {
+                console.error("Ürünler yüklenirken bir hata oluştu:", error);
+                notyf.error("Ürünler yüklenirken bir hata oluştu.");
+            }
+        });
+    }
+});
+
+    </script>
+}
 
